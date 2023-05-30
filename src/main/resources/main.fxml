@@ -32,6 +32,7 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -42,6 +43,12 @@
 
 <VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.fixca.clipstretcher.gui.controller.MainController">
   <children>
+      <HBox alignment="CENTER">
+         <children>
+            <Button fx:id="executeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Start" />
+            <Button fx:id="refreshButton" mnemonicParsing="false" text="Refresh" />
+         </children>
+      </HBox>
       <HBox>
          <children>
             <VBox prefHeight="369.0" prefWidth="331.0">
@@ -62,7 +69,7 @@
             </VBox>
             <ScrollPane>
                <content>
-                  <Label id="commandLineLabel" alignment="BOTTOM_LEFT" focusTraversable="false" prefHeight="369.0" prefWidth="308.0" />
+                  <Label id="commandLineLabel" fx:id="commandLabel" alignment="BOTTOM_LEFT" focusTraversable="false" prefHeight="369.0" prefWidth="308.0" />
                </content>
             </ScrollPane>
          </children>
