@@ -51,7 +51,7 @@ public class ExecutorHandler {
                         alert.showAndWait();
                         MainController.getInstance().updateView();
                         MainController.getInstance().getProgressBar().setProgress(0);
-                        MainController.getInstance().getExecuteButton().setDisable(false);
+                        MainController.getInstance().enableButtons();
                     });
                 }
             });

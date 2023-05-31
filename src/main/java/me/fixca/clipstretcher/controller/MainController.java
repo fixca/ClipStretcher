@@ -65,7 +65,7 @@ public class MainController implements Initializable {
                 return;
             }
             if(!ExecutorHandler.isExecuting()) {
-                executeButton.setDisable(true);
+                disableButtons();
                 ExecutorHandler.start();
             }
         });
@@ -95,5 +95,15 @@ public class MainController implements Initializable {
         }
         elementFileListView.setItems(FXCollections.observableList(fileList));
         elementClickListView.setItems(FXCollections.observableList(checkBoxList));
+    }
+
+    public void disableButtons() {
+        executeButton.setDisable(true);
+        refreshButton.setDisable(true);
+    }
+
+    public void enableButtons() {
+        executeButton.setDisable(false);
+        refreshButton.setDisable(false);
     }
 }
