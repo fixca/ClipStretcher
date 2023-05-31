@@ -1,6 +1,7 @@
 package me.fixca.clipstretcher;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import lombok.Getter;
 import me.fixca.clipstretcher.gui.TestScene;
@@ -11,7 +12,6 @@ public class Main extends Application {
     private static Stage primaryStage;
 
     public static void main(String[] args) {
-
         launch(args);
     }
 
@@ -19,5 +19,9 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         primaryStage = stage;
         new TestScene();
+        primaryStage.setOnCloseRequest(e -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 }
