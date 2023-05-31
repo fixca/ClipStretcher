@@ -29,7 +29,7 @@ public class Main extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("main.fxml"));
             Scene scene = new Scene(root);
-            primaryStage.setTitle("Test");
+            primaryStage.setTitle("Clip Stretcher");
             primaryStage.setScene(scene);
             primaryStage.show();
         }
