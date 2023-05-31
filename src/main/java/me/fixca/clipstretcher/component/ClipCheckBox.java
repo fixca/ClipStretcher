@@ -21,11 +21,9 @@ public class ClipCheckBox extends CheckBox implements EventHandler<ActionEvent> 
     @Override
     public void handle(ActionEvent event) {
         if(isSelected()) {
-            System.out.println(clip.getFileName() + " is selected");
             ClipRepository.addSelectedClip(clip);
         }
         else {
-            System.out.println(clip.getFileName() + " is unselected");
             ClipRepository.removeSelectedClip(clip);
         }
     }
