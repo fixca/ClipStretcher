@@ -1,4 +1,4 @@
-package me.fixca.clipstretcher.gui.controller;
+package me.fixca.clipstretcher.controller;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;

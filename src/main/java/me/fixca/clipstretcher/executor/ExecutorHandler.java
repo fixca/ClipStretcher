@@ -7,7 +7,7 @@ import javafx.scene.control.Alert;
 import lombok.Getter;
 import lombok.Setter;
 import me.fixca.clipstretcher.Clip;
-import me.fixca.clipstretcher.gui.controller.MainController;
+import me.fixca.clipstretcher.controller.MainController;
 import me.fixca.clipstretcher.storage.ClipRepository;
 
 import java.util.concurrent.CompletableFuture;

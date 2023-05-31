@@ -2,9 +2,11 @@ package me.fixca.clipstretcher;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.Getter;
-import me.fixca.clipstretcher.gui.TestScene;
 
 public class Main extends Application {
 
@@ -18,10 +20,21 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         primaryStage = stage;
-        new TestScene();
+
         primaryStage.setOnCloseRequest(e -> {
             Platform.exit();
             System.exit(0);
         });
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("main.fxml"));
+            Scene scene = new Scene(root);
+            primaryStage.setTitle("Test");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
