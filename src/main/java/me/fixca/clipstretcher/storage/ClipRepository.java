@@ -5,7 +5,6 @@ import me.fixca.clipstretcher.Clip;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.LinkedBlockingDeque;
 
 public class ClipRepository {
 

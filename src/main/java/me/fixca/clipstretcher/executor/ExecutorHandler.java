@@ -20,8 +20,6 @@ public class ExecutorHandler {
     private static int originalAmount = -1;
     private static DoubleProperty property;
 
-
-
     public static void start() {
         if (executing) {
             return;
@@ -34,8 +32,6 @@ public class ExecutorHandler {
         property.addListener((observable, oldValue, newValue) -> {
             MainController.getInstance().getProgressBar().progressProperty().bind(property);
         });
-
-
 
         for (Clip clip : ClipRepository.getAllSelectedClips()) {
             CompletableFuture<Integer> completableFuture = CommandExecutor.executeStretch(clip);
