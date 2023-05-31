@@ -14,9 +14,19 @@ public class ClipParser {
         File inputFolder = new File("./Inputs");
         File outputFolder = new File("./Outputs");
 
-        List<File> outputVideos = Arrays.stream(outputFolder.listFiles()).filter(file -> file.getName().endsWith(".mp4")).collect(Collectors.toList());
+        List<File> outputVideos = Arrays.stream(outputFolder.listFiles())
+                .filter(File::isFile)
+                .filter(file -> file.getName().endsWith(".mp4"))
+                .collect(Collectors.toList());
 
-        List<File> videos = Arrays.stream(inputFolder.listFiles()).filter(file -> file.getName().endsWith(".mp4")).filter(file -> !outputVideos.contains(file)).collect(Collectors.toList());
+        List<File> videos = Arrays.stream(inputFolder.listFiles())
+                .filter(File::isFile)
+                .filter(file -> file.getName().endsWith(".mp4"))
+                .filter(file -> outputVideos.stream().noneMatch(file1 -> file1.getName().equals(file.getName())))
+                .collect(Collectors.toList());
+
+        System.out.println(outputVideos);
+        System.out.println(videos);
 
         for (File video : videos) {
             ClipRepository.addClip(new Clip(video));
