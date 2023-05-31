@@ -69,7 +69,7 @@
             </VBox>
             <ScrollPane>
                <content>
-                  <Label id="commandLineLabel" fx:id="commandLabel" alignment="BOTTOM_LEFT" focusTraversable="false" prefHeight="369.0" prefWidth="308.0" />
+                  <Label id="commandLineLabel" fx:id="commandLabel" alignment="BOTTOM_CENTER" focusTraversable="false" prefWidth="308.0" />
                </content>
             </ScrollPane>
          </children>
