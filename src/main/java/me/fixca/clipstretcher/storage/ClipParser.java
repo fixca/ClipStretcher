@@ -25,9 +25,6 @@ public class ClipParser {
                 .filter(file -> outputVideos.stream().noneMatch(file1 -> file1.getName().equals(file.getName())))
                 .collect(Collectors.toList());
 
-        System.out.println(outputVideos);
-        System.out.println(videos);
-
         for (File video : videos) {
             ClipRepository.addClip(new Clip(video));
         }
