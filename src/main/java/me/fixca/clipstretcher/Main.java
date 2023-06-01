@@ -22,8 +22,7 @@ public class Main extends Application {
         primaryStage = stage;
 
         primaryStage.setOnCloseRequest(e -> {
-            Platform.exit();
-            System.exit(0);
+            stopProcess();
         });
 
         try {
@@ -36,5 +35,10 @@ public class Main extends Application {
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void stopProcess() {
+        Platform.exit();
+        System.exit(0);
     }
 }
