@@ -1,6 +1,7 @@
 package me.fixca.clipstretcher.controller;
 
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -53,6 +54,9 @@ public class MainController implements Initializable {
     @Getter
     private Label commandLabel;
 
+    @FXML
+    private ScrollPane commandScrollPane;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;
@@ -75,7 +79,12 @@ public class MainController implements Initializable {
         service.scheduleAtFixedRate(() -> {
             Platform.runLater(() -> {
                 try {
-                    MainController.getInstance().getCommandLabel().setText(LineCollector.getOutputStream().toString("utf-8"));
+                    commandLabel.setText(LineCollector.getOutputStream().toString("utf-8"));
+                    ObservableValue value = commandLabel.heightProperty();
+                    if(value != null) {
+                        commandScrollPane.vvalueProperty().bind(value);
+                    }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
