@@ -19,10 +19,12 @@ public class ClipCheckBox extends CheckBox implements EventHandler<ActionEvent> 
     }
 
     public void select() {
+        setSelected(true);
         ClipRepository.addSelectedClip(clip);
     }
 
     public void remove() {
+        setSelected(false);
         ClipRepository.removeSelectedClip(clip);
     }
 

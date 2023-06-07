@@ -37,7 +37,7 @@ public class MainController implements Initializable {
     private ProgressBar progressBar;
 
     @FXML
-    private ListView<CheckBox> elementClickListView;
+    private ListView<ClipCheckBox> elementClickListView;
 
     @FXML
     private ListView<String> elementFileListView;
@@ -61,6 +61,7 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;
         updateView();
+
         executeButton.setOnAction(e -> {
             if(ClipRepository.getAllSelectedClips().size() == 0) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -73,9 +74,28 @@ public class MainController implements Initializable {
                 ExecutorHandler.start();
             }
         });
+
         refreshButton.setOnAction(e -> {
             updateView();
         });
+
+        allCheckBox.setOnAction(e -> {
+            if(allCheckBox.isSelected()) {
+                for (ClipCheckBox checkBox : elementClickListView.getItems()) {
+                    if(!checkBox.isSelected()) {
+                        checkBox.select();
+                    }
+                }
+            }
+            else {
+                for (ClipCheckBox checkBox : elementClickListView.getItems()) {
+                    if(checkBox.isSelected()) {
+                        checkBox.remove();
+                    }
+                }
+            }
+        });
+
         service.scheduleAtFixedRate(() -> {
             Platform.runLater(() -> {
                 try {
@@ -96,7 +116,7 @@ public class MainController implements Initializable {
         ClipRepository.wipe();
         ClipParser.parse();
         List<String> fileList = new LinkedList<>();
-        List<CheckBox> checkBoxList = new LinkedList<>();
+        List<ClipCheckBox> checkBoxList = new LinkedList<>();
         for (Clip clip : ClipRepository.getAllClips()) {
             fileList.add(clip.getFileName());
             ClipCheckBox checkBox = new ClipCheckBox(clip);
