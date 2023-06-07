@@ -57,6 +57,14 @@ public class MainController implements Initializable {
     @FXML
     private ScrollPane commandScrollPane;
 
+    @FXML
+    @Getter
+    private CheckMenuItem checkGPUAccelItem;
+
+    @FXML
+    @Getter
+    private CheckMenuItem checkMultiThreadItem;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;
@@ -129,10 +137,14 @@ public class MainController implements Initializable {
     public void disableButtons() {
         executeButton.setDisable(true);
         refreshButton.setDisable(true);
+        checkGPUAccelItem.setDisable(true);
+        checkMultiThreadItem.setDisable(true);
     }
 
     public void enableButtons() {
         executeButton.setDisable(false);
         refreshButton.setDisable(false);
+        checkGPUAccelItem.setDisable(false);
+        checkMultiThreadItem.setDisable(false);
     }
 }

@@ -50,8 +50,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="Option">
             <items>
-                  <CheckMenuItem mnemonicParsing="false" text="GPU Acceleration" />
-                  <CheckMenuItem mnemonicParsing="false" text="Multi-Thread Rendering" />
+                  <CheckMenuItem fx:id="checkGPUAccelItem" mnemonicParsing="false" text="GPU Acceleration" />
+                  <CheckMenuItem fx:id="checkMultiThreadItem" mnemonicParsing="false" text="Multi-Thread Rendering" />
             </items>
           </Menu>
         </menus>
