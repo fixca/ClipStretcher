@@ -9,21 +9,23 @@ import java.util.concurrent.CompletableFuture;
 
 public class CommandExecutor {
 
-    public static CompletableFuture<Integer> executeStretch(Clip clip) {
+    public static CompletableFuture<Integer> executeStretchAsync(Clip clip) {
+        return CompletableFuture.supplyAsync(() -> executeStretch(clip));
+    }
+
+    public static Integer executeStretch(Clip clip) {
         String command = MessageFormat.format("ffmpeg.exe -i ./Inputs/{0} -vf \"scale=1920:1080, setsar=1\" ./Outputs/{1}", clip.getFileName(), clip.getFileName());
 
         DefaultExecutor executor = new DefaultExecutor();
         executor.setStreamHandler(LineCollector.getStreamHandler());
 
-        return CompletableFuture.supplyAsync(() -> {
-            try {
-                CommandLine cmdLine = CommandLine.parse(command);
-                return executor.execute(cmdLine);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return null;
-        });
+        try {
+            CommandLine cmdLine = CommandLine.parse(command);
+            return executor.execute(cmdLine);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
