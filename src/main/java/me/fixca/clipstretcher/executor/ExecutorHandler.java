@@ -22,7 +22,7 @@ public class ExecutorHandler {
     private static int originalAmount = -1;
     private static DoubleProperty property;
 
-    private static void preRendering(Clip clip) {
+    private static void postRendering(Clip clip) {
         property.add(1 / originalAmount);
         ClipRepository.removeSelectedClip(clip);
         if (ClipRepository.getAllSelectedClips().size() == 0) {
@@ -57,12 +57,12 @@ public class ExecutorHandler {
                 if(MainController.getInstance().getCheckMultiThreadItem().isSelected()) {
                     CompletableFuture<Integer> completableFuture = CommandExecutor.executeStretchAsync(clip);
                     completableFuture.thenRunAsync(() -> {
-                        preRendering(clip);
+                        postRendering(clip);
                     });
                 }
                 else {
                     CommandExecutor.executeStretch(clip);
-                    preRendering(clip);
+                    postRendering(clip);
                 }
             }
         });
