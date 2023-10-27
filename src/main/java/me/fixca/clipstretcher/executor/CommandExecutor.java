@@ -14,7 +14,7 @@ public class CommandExecutor {
     }
 
     public static Integer executeStretch(Clip clip) {
-        String command = MessageFormat.format("ffmpeg.exe -i ./Inputs/{0} -vf \"scale=1920:1080, setsar=1\" ./Outputs/{1}", clip.getFileName(), clip.getFileName());
+        String command = MessageFormat.format("ffmpeg.exe -i ./Inputs/{0} -vf \"crop=1440:1080 ,scale=1920:1080 ,setsar=1\" ./Outputs/{1}", clip.getFileName(), clip.getFileName());
 
         DefaultExecutor executor = new DefaultExecutor();
         executor.setStreamHandler(LineCollector.getStreamHandler());

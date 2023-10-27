@@ -26,7 +26,7 @@ public class ClipParser {
                 .collect(Collectors.toList());
 
         for (File video : videos) {
-            ClipRepository.addClip(new Clip(video));
+            ClipRepository.getClips().add(new Clip(video));
         }
 
     }

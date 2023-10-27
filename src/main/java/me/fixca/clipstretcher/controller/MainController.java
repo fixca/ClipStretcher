@@ -71,7 +71,7 @@ public class MainController implements Initializable {
         updateView();
 
         executeButton.setOnAction(e -> {
-            if(ClipRepository.getAllSelectedClips().size() == 0) {
+            if(ClipRepository.getSelectedClips().isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Please select some clips to start the progress!");
                 alert.show();
@@ -125,7 +125,7 @@ public class MainController implements Initializable {
         ClipParser.parse();
         List<String> fileList = new LinkedList<>();
         List<ClipCheckBox> checkBoxList = new LinkedList<>();
-        for (Clip clip : ClipRepository.getAllClips()) {
+        for (Clip clip : ClipRepository.getClips()) {
             fileList.add(clip.getFileName());
             ClipCheckBox checkBox = new ClipCheckBox(clip);
             checkBoxList.add(checkBox);

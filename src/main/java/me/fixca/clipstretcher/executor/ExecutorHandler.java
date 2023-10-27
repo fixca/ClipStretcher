@@ -19,13 +19,11 @@ public class ExecutorHandler {
     @Setter
     private static boolean executing = false;
 
-    private static int originalAmount = -1;
     private static DoubleProperty property;
 
     private static void postRendering(Clip clip) {
-        property.add(1 / originalAmount);
-        ClipRepository.removeSelectedClip(clip);
-        if (ClipRepository.getAllSelectedClips().size() == 0) {
+        ClipRepository.getClips().remove(clip);
+        if (ClipRepository.getSelectedClips().isEmpty()) {
             executing = false;
             LineCollector.reset();
             Platform.runLater(() -> {
@@ -46,14 +44,15 @@ public class ExecutorHandler {
 
         executing = true;
         property = new SimpleDoubleProperty();
-        originalAmount = ClipRepository.getAllSelectedClips().size();
 
         property.addListener((observable, oldValue, newValue) -> {
             MainController.getInstance().getProgressBar().progressProperty().bind(property);
         });
 
         Executors.newSingleThreadExecutor().execute(() -> {
-            for (Clip clip : ClipRepository.getAllSelectedClips()) {
+            int size = ClipRepository.getSelectedClips().size();
+            for (int i = 0; i < size; i++) {
+                Clip clip = ClipRepository.getSelectedClips().pollFirst();
                 if(MainController.getInstance().getCheckMultiThreadItem().isSelected()) {
                     CompletableFuture<Integer> completableFuture = CommandExecutor.executeStretchAsync(clip);
                     completableFuture.thenRunAsync(() -> {
