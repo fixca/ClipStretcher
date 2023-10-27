@@ -138,5 +138,6 @@ buildNumber.properties
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij+iml,maven
 
 ffmpeg.exe
+ffprobe.exe
 Inputs/
 Outputs/
