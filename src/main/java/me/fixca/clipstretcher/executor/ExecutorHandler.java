@@ -33,6 +33,7 @@ public class ExecutorHandler {
                 MainController.getInstance().updateView();
                 MainController.getInstance().getProgressBar().setProgress(0);
                 MainController.getInstance().enableButtons();
+                MainController.getInstance().getAllCheckBox().setSelected(false);
             });
         }
     }

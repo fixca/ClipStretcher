@@ -30,6 +30,7 @@ public class MainController implements Initializable {
     private static MainController instance;
 
     @FXML
+    @Getter
     private CheckBox allCheckBox;
 
     @FXML
@@ -139,6 +140,10 @@ public class MainController implements Initializable {
         refreshButton.setDisable(true);
         checkGPUAccelItem.setDisable(true);
         checkMultiThreadItem.setDisable(true);
+        allCheckBox.setDisable(true);
+        for (ClipCheckBox clipCheckBox : elementClickListView.getItems()) {
+            clipCheckBox.setDisable(true);
+        }
     }
 
     public void enableButtons() {
@@ -146,5 +151,6 @@ public class MainController implements Initializable {
         refreshButton.setDisable(false);
         checkGPUAccelItem.setDisable(false);
         checkMultiThreadItem.setDisable(false);
+        allCheckBox.setDisable(false);
     }
 }
