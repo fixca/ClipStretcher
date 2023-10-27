@@ -11,8 +11,8 @@ public class ClipParser {
 
     public static void parse() {
 
-        File inputFolder = new File("./Inputs");
-        File outputFolder = new File("./Outputs");
+        File inputFolder = new File("Inputs");
+        File outputFolder = new File("Outputs");
 
         List<File> outputVideos = Arrays.stream(outputFolder.listFiles())
                 .filter(File::isFile)
