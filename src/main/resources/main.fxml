@@ -52,7 +52,6 @@
             <items>
                   <CheckMenuItem fx:id="checkGPUAccelItem" mnemonicParsing="false" text="GPU Acceleration" />
                   <CheckMenuItem fx:id="checkMultiThreadItem" mnemonicParsing="false" text="Multi-Thread Rendering" />
-                  <CheckMenuItem fx:id="clipHasLetterBoxItem" mnemonicParsing="false" text="Remove LetterBox" />
             </items>
           </Menu>
         </menus>

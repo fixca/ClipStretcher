@@ -66,10 +66,6 @@ public class MainController implements Initializable {
     @Getter
     private CheckMenuItem checkMultiThreadItem;
 
-    @FXML
-    @Getter
-    private CheckMenuItem clipHasLetterBoxItem;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;
@@ -144,7 +140,6 @@ public class MainController implements Initializable {
         refreshButton.setDisable(true);
         checkGPUAccelItem.setDisable(true);
         checkMultiThreadItem.setDisable(true);
-        clipHasLetterBoxItem.setDisable(true);
         allCheckBox.setDisable(true);
         for (ClipCheckBox clipCheckBox : elementClickListView.getItems()) {
             clipCheckBox.setDisable(true);
@@ -156,7 +151,6 @@ public class MainController implements Initializable {
         refreshButton.setDisable(false);
         checkGPUAccelItem.setDisable(false);
         checkMultiThreadItem.setDisable(false);
-        clipHasLetterBoxItem.setDisable(false);
         allCheckBox.setDisable(false);
     }
 }
