@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.Getter;
+import me.fixca.clipstretcher.executor.FFmpegController;
 
 public class Main extends Application {
 
@@ -26,6 +27,7 @@ public class Main extends Application {
         });
 
         try {
+            FFmpegController.initFFmpeg();
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("main.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Clip Stretcher");
